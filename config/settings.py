@@ -114,11 +114,11 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = "media/"
 
@@ -142,7 +142,7 @@ SIMPLE_JWT = {
     "UPDATE_LAST_LOGIN": True, # sets date of the last login
 }
 
-# Stripe config 
+# Stripe config
 SECRET_STRIPE_KEY = os.getenv("SECRET_KEY")
 
 # Celery config
@@ -174,9 +174,9 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 
-CASHES = {
+CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': 'redis://redis:6379/1',
+        'LOCATION': 'redis://redis:6379/1'
     }
 }
