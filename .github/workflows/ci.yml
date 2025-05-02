@@ -2,9 +2,9 @@ name: Django CI
 
 on:
   push:
-    branches: [ "yml" ]
+    branches: [ "without_yml" ]
   pull_request:
-    branches: [ "yml" ]
+    branches: [ "without_yml" ]
 
 jobs:
   test:
@@ -39,7 +39,7 @@ jobs:
         POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-        POSTGRES_HOST: db
+        POSTGRES_HOST: localhost
 
 #    - name: Run tests
 #      run: python manage.py test
