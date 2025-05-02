@@ -1,6 +1,10 @@
 name: Django CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ "yml" ]
+  pull_request:
+    branches: [ "yml" ]
 
 jobs:
   test:
