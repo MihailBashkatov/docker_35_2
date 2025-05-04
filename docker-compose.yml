@@ -42,6 +42,8 @@ services:
     image: postgres:16
     restart: always
     container_name: psgr
+#    ports:
+#     - "5432:5432"
     env_file:
       - ./.env
     volumes:
@@ -76,16 +78,18 @@ services:
       - redis
       - web
 
-  celery_beat:
-    build: .
-    command: bash -c "celery -A config beat -l INFO -S django"
-    env_file:
-      - .env
-    networks:
-      - dbnet
-    depends_on:
-      - redis
-      - web
+#  celery_beat:
+#    build: .
+#    command: celery -A config beat -l info -S django
+#    restart: always
+#    volumes:
+#      - .:/app
+#    env_file:
+#      - .env
+#    depends_on:
+#      - db
+#      - redis
+#      - web
 
 
 networks:
