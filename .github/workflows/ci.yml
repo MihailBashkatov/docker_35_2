@@ -10,27 +10,27 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-#    services:
-#      # Label used to access the service container
-#      postgres:
-#        # Docker Hub image
-#        image: postgres:16
-#        # Provide the password for postgres
-#        env:
-#
-#          POSTGRES_DB: online_course_project
-#          POSTGRES_USER: postgres
-#          POSTGRES_PASSWORD: library_password
-#          POSTGRES_HOST: localhost
-#          POSTGRES_PORT: 5432
-#        # Set health checks to wait until postgres has started
-#        options: >-
-#          --health-cmd pg_isready
-#          --health-interval 10s
-#          --health-timeout 5s
-#          --health-retries 5
-#        ports:
-#          - 5432:5432
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres:16
+        # Provide the password for postgres
+        env:
+
+          POSTGRES_DB: online_course_project
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: library_password
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
 
     steps:
     - name: Check out code
@@ -60,7 +60,7 @@ jobs:
         POSTGRES_DB: online_course_project
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: library_password
-        POSTGRES_HOST: localhost
+        POSTGRES_HOST: postgres
       run: python manage.py migrate
 
 
