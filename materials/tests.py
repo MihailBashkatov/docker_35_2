@@ -56,10 +56,12 @@ class CourseTestCase(APITestCase):
         url = reverse("materials:courses-list")
         response = self.client.get(url)
         data = response.json()
+        print(data)
         result = [
-            {
+            {   "id": 4,
                 "name": self.course.name,
                 "owner": self.owner.pk,
+                "description": self.course.description,
                 "subscription": None,
                 "lessons_count": 1,
                 "lessons": [
