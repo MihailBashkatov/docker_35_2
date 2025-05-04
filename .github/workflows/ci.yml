@@ -52,11 +52,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-
-    - name: Run migrations
-      env:
-        SECRET_KEY: django-insecure-u_yv*ek#*3y72cy3b9nn+^&0cl!m)f4gwl4vfk!0+&75y^$wh)
-      run: python manage.py migrate
+#
+#    - name: Run migrations
+#      env:
+#        SECRET_KEY: django-insecure-u_yv*ek#*3y72cy3b9nn+^&0cl!m)f4gwl4vfk!0+&75y^$wh)
+#      run: python manage.py migrate
 
 
 #    - name: Run tests
