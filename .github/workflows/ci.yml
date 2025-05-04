@@ -33,7 +33,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run migrations
-      run: python manage.py
+      run: python manage.py migrate
       env:
         SECRET_KEY: django-insecure-u_yv*ek#*3y72cy3b9nn+^&0cl!m)f4gwl4vfk!0+&75y^$wh)
         POSTGRES_DB: online_course_project
