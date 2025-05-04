@@ -10,6 +10,27 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres:16
+        # Provide the password for postgres
+        env:
+
+          POSTGRES_DB: online_course_project
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: library_password
+          POSTGRES_HOST: localhost
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
     steps:
     - name: Check out code
       uses: actions/checkout@v3
@@ -35,10 +56,6 @@ jobs:
     - name: Run migrations
       env:
         SECRET_KEY: django-insecure-u_yv*ek#*3y72cy3b9nn+^&0cl!m)f4gwl4vfk!0+&75y^$wh)
-        POSTGRES_DB: online_course_project
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: library_password
-        POSTGRES_HOST: localhost
       run: python manage.py migrate
 
 
