@@ -32,5 +32,5 @@ RUN mkdir -p /app/media
 # Set up [ort for Django
 EXPOSE 8000
 
-# Start command
+# Start comman
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
