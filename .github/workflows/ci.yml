@@ -2,9 +2,9 @@ name: Django CI
 
 on:
   push:
-    branches: [ "yml" ]
+    branches: [ "yml_continuation" ]
   pull_request:
-    branches: [ "yml" ]
+    branches: [ "yml_continuation" ]
 
 jobs:
   test:
