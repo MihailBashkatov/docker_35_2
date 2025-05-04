@@ -39,7 +39,7 @@ jobs:
         POSTGRES_DB: online_course_project
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: library_password
-        POSTGRES_HOST: 192.168.163.128
+        POSTGRES_HOST: 172.17.0.1
 
 #    - name: Run tests
 #      run: python manage.py test
