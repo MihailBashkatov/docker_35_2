@@ -10,8 +10,8 @@ services:
 
     env_file:
       - ./.env
-#    links:
-#      - "db:db"
+    links:
+      - "db:db"
     networks:
       - dbnet
     volumes:
