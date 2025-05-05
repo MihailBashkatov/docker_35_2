@@ -65,16 +65,16 @@ services:
       - dbnet
 
 
-  celery:
-    build: .
-    command: bash -c "celery -A config worker -l INFO"
-    env_file:
-      - .env
-    networks:
-      - dbnet
-    depends_on:
-      - redis
-      - web
+#  celery:
+#    build: .
+#    command: bash -c "celery -A config worker -l INFO"
+#    env_file:
+#      - .env
+#    networks:
+#      - dbnet
+#    depends_on:
+#      - redis
+#      - web
 
 #  celery_beat:
 #    build: .
