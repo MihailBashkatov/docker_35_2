@@ -1,8 +1,6 @@
 import os
 from datetime import timedelta
 from pathlib import Path
-
-from celery.schedules import crontab
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / "subdir".
@@ -143,6 +141,7 @@ SIMPLE_JWT = {
     "UPDATE_LAST_LOGIN": True, # sets date of the last logi
 }
 
+
 # Stripe config
 SECRET_STRIPE_KEY = os.getenv("SECRET_KEY")
 
@@ -168,8 +167,8 @@ CELERY_BEAT_SCHEDULE = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = os.getenv('EMAIL_PORT')
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS',False) == 'True'
-EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL',False) == 'True'
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', False) == 'True'
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', False) == 'True'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

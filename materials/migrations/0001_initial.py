@@ -23,7 +23,8 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("name", models.CharField(max_length=300, verbose_name="Name")),
+                ("name", models.CharField(max_length=300,
+                                          verbose_name="Name")),
                 ("description", models.TextField(verbose_name="Description")),
                 (
                     "preview",
@@ -54,7 +55,8 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("name", models.CharField(max_length=300, verbose_name="Name")),
+                ("name", models.CharField(max_length=300,
+                                          verbose_name="Name")),
                 ("description", models.TextField(verbose_name="Description")),
                 (
                     "preview",
