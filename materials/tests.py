@@ -69,13 +69,20 @@ class CourseTestCase(APITestCase):
                         "lessons_count": 1,
                         "lessons": [
                                         {
-                                            "id": self.lesson.pk,
-                                            "name": self.lesson.name,
-                                            "description": self.lesson.description,
-                                            "preview": None,
-                                            "url_link": None,
-                                            "course": self.course.pk,
-                                            "owner": self.owner.pk,
+                                            "id":
+                                                self.lesson.pk,
+                                            "name":
+                                                self.lesson.name,
+                                            "description":
+                                                self.lesson.description,
+                                            "preview":
+                                                None,
+                                            "url_link":
+                                                None,
+                                            "course":
+                                                self.course.pk,
+                                            "owner":
+                                                self.owner.pk,
                                         }
                                     ],
                     }
