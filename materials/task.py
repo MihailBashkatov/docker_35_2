@@ -13,7 +13,8 @@ def send_update_course_info(users_list, course_name):
     """Task to send email about Course changing for subscribed users"""
     send_mail(
         subject=f"Updated info for course {course_name}",
-        message=f"The course {course_name} has been updated. Please, check details",
+        message=f"The course {course_name} "
+                f"has been updated. Please, check details",
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=users_list,
     )
@@ -21,7 +22,8 @@ def send_update_course_info(users_list, course_name):
 
 @shared_task
 def last_login():
-    """Task to identify last user login. If login happens more than 1 month ago, user becomes Inactive"""
+    """Task to identify last user login.
+    If login happens more than 1 month ago, user becomes Inactive"""
 
     today = timezone.now().today()  # gets current date
     user_is_active = User.objects.filter(is_active=True)  # gets active users
@@ -34,5 +36,6 @@ def last_login():
 
         if user_last_login < valid_interval.date():
 
-            user.is_active = False  # sets user in_active on 31st day after last login
+            # sets user in_active on 31st day after last login
+            user.is_active = False
             user.save()
