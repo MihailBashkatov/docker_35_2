@@ -9,8 +9,13 @@ stripe.api_key = SECRET_STRIPE_KEY
 
 def create_product(product):
     """Create product in Stripe."""
-    lesson_name = Lesson.objects.get(id=product).name # getting Lesson name
-    course_name = Lesson.objects.get(id=product).course # getting Course name
+
+
+    # getting Lesson name
+    lesson_name = Lesson.objects.get(id=product).name
+
+    # getting Course name
+    course_name = Lesson.objects.get(id=product).course
     product_name = f"Course: {course_name}\nLesson: {lesson_name}"
     return stripe.Product.create(name=product_name)
 

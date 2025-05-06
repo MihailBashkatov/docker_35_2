@@ -141,5 +141,6 @@ class Command(BaseCommand):
             Payment.objects.get_or_create(**payment_data)
 
         self.stdout.write(
-            self.style.SUCCESS(f"Successfully added {len(payments)} test payments")
+            self.style.SUCCESS(
+                f"Successfully added {len(payments)} test payments")
         ),

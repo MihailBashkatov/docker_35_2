@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -11,7 +9,8 @@ class User(AbstractUser):
 
     username = None
     email = models.EmailField(unique=True, verbose_name="Email")
-    city = models.CharField(max_length=50, blank=True, null=True, verbose_name="City")
+    city = models.CharField(max_length=50, blank=True, null=True,
+                            verbose_name="City")
     phone_number = models.CharField(
         max_length=30, blank=True, null=True, verbose_name="Phone number"
     )
@@ -84,9 +83,11 @@ class Payment(models.Model):
         related_name="paid_lesson",
     )
 
-    session_id = models.CharField(max_length=400, blank=True, null=True, verbose_name='Link to the session')
+    session_id = models.CharField(max_length=400, blank=True, null=True,
+                                  verbose_name='Link to the session')
 
-    link = models.URLField(max_length=400, blank=True, null=True, verbose_name='Link to the session')
+    link = models.URLField(max_length=400, blank=True, null=True,
+                           verbose_name='Link to the session')
 
     def __str__(self):
 

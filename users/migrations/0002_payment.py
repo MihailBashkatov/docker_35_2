@@ -27,9 +27,11 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "payment_date",
-                    models.DateField(auto_now=True, verbose_name="Payment date"),
+                    models.DateField(auto_now=True,
+                                     verbose_name="Payment date"),
                 ),
-                ("payment_summ", models.FloatField(verbose_name="Payment Summ")),
+                ("payment_summ", models.FloatField(
+                    verbose_name="Payment Summ")),
                 (
                     "payment_mode",
                     models.CharField(
