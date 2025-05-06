@@ -88,7 +88,9 @@ class LessonTestCase(APITestCase):
     def setUp(self) -> None:
         self.owner = User.objects.create(email="user@user.com")
         self.course = Course.objects.create(
-            name="test_course", description="test_course_description", owner=self.owner
+            name="test_course",
+            description="test_course_description",
+            owner=self.owner
         )
 
         self.lesson = Lesson.objects.create(
@@ -164,11 +166,15 @@ class SubscriptionTestCase(APITestCase):
     def setUp(self) -> None:
         self.user = User.objects.create(email="user@user.com")
         self.course = Course.objects.create(
-            name="test_course", description="test_course_description", owner=self.user
+            name="test_course",
+            description="test_course_description",
+            owner=self.user
         )
 
         self.subscription = Subscription.objects.create(
-            user=self.user, course=self.course, subscription=False
+            user=self.user,
+            course=self.course,
+            subscription=False
         )
 
         self.client.force_authenticate(user=self.user)
