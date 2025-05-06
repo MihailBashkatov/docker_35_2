@@ -19,12 +19,12 @@ services:
 
   nginx:
     image: miahilus/nginx:latest
-    networks:
-      - dbnet
     ports:
       - "80:80"
     volumes:
       - static_volume:/app/staticfiles
+    depends_on:
+      - web
 
   db:
     image: postgres:16
