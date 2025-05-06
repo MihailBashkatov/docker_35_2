@@ -2,9 +2,9 @@ name: Django CI
 
 on:
   push:
-    branches: [ "yml_deploy" ]
+    branches: [ "yml_final" ]
   pull_request:
-    branches: [ "yml_deploy" ]
+    branches: [ "yml_final" ]
 
 jobs:
 
@@ -29,7 +29,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-
+    needs: lint
     services:
       # Label used to access the service container
       postgres:
@@ -107,13 +107,13 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/online_course_project .
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/nginx nginx/.
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/online_course_project:${{ github.sha }} .
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/nginx:${{ github.sha }} nginx/.
 
       - name: Push Docker image to Docker Hub
         run: |
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/online_course_project
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/nginx
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/online_course_project:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/nginx:${{ github.sha }}
           
 
   copy_files_in_server:
@@ -151,8 +151,8 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -vT ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
             cd ${{ secrets.DEPLOY_DIR }}
-            docker compose down
-            docker container rm $(docker ps -a -q)
+            docker compose down || true
+            docker container rm $(docker ps -a -q) || true
             docker compose up -d --build
 
           EOF
