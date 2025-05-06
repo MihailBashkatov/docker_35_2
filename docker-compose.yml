@@ -5,7 +5,7 @@ services:
     restart: always
     image: miahilus/online_course_project:latest
     container_name: course_8
-    command: bash -c "python manage.py && collectstatic --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
+    command: sh -c "python manage.py collectstatic --noinput && python manage.py migrate && gunicorn nginx_with_static_media.wsgi:application --bind 0.0.0.0:8000"
 
     env_file:
       - ./.env
