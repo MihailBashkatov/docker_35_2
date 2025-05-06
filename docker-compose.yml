@@ -9,10 +9,6 @@ services:
 
     env_file:
       - ./.env
-#    links:
-#      - "db:db"
-    networks:
-      - dbnet
     volumes:
       - static_volume:/app/staticfiles
     expose:
@@ -21,7 +17,6 @@ services:
           db:
             condition: service_healthy
 
-
   nginx:
     image: miahilus/nginx:latest
     networks:
@@ -29,12 +24,9 @@ services:
     ports:
       - "80:80"
     volumes:
-#      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - static_volume:/app/staticfiles
     depends_on:
       - web
-
-
 
   db:
     image: postgres:16
@@ -44,16 +36,11 @@ services:
       - ./.env
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    networks:
-      - dbnet
-    ports:
-      - "5432:5432"
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
       interval: 30s
       timeout: 10s
       retries: 5
-
 
   redis:
     image: redis
@@ -61,9 +48,6 @@ services:
       - "6379:6379"
     env_file:
       - ./.env
-    networks:
-      - dbnet
-
 
 #  celery:
 #    build: .
@@ -86,11 +70,6 @@ services:
 #    depends_on:
 #      - redis
 #      - web
-
-
-networks:
-  dbnet:
-    driver: bridge
 
 volumes:
   postgres_data:
