@@ -60,24 +60,25 @@ class CourseTestCase(APITestCase):
         response = self.client.get(url)
         data = response.json()
         result = [
-                {"id": 4,
-                "name": self.course.name,
-                "owner": self.owner.pk,
-                "description": self.course.description,
-                "subscription": None,
-                "lessons_count": 1,
-                "lessons": [
                     {
-                        "id": self.lesson.pk,
-                        "name": self.lesson.name,
-                        "description": self.lesson.description,
-                        "preview": None,
-                        "url_link": None,
-                        "course": self.course.pk,
+                        "id": 4,
+                        "name": self.course.name,
                         "owner": self.owner.pk,
+                        "description": self.course.description,
+                        "subscription": None,
+                        "lessons_count": 1,
+                        "lessons": [
+                                        {
+                                            "id": self.lesson.pk,
+                                            "name": self.lesson.name,
+                                            "description": self.lesson.description,
+                                            "preview": None,
+                                            "url_link": None,
+                                            "course": self.course.pk,
+                                            "owner": self.owner.pk,
+                                        }
+                                    ],
                     }
-                ],
-                }
                 ]
 
         self.assertEqual(Course.objects.all().count(), 1)
