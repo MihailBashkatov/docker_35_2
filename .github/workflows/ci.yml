@@ -37,13 +37,13 @@ jobs:
         image: postgres:16
         # Provide the password for postgres
         env:
-
+#            '"${{ secrets.ENV_FILE }}"' | sed "s/\"//g"
           POSTGRES_DB: online_course_project
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: library_password
           POSTGRES_HOST: db
           POSTGRES_PORT: 5432
-        # Set health checks to wait until postgres has started
+#         Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -80,7 +80,7 @@ jobs:
         POSTGRES_DB: online_course_project
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: library_password
-        POSTGRES_HOST: localhost
+        POSTGRES_HOST: db
       run: python manage.py migrate
 
 
