@@ -14,7 +14,7 @@ services:
     networks:
       - dbnet
     volumes:
-      - .:/app
+#      - .:/app
       - static_volume:/app/staticfiles
     expose:
       - "8000"
